@@ -43,6 +43,17 @@ app.post('/api/users', function (req,response){
     })
 })
 
+async function getUsers(){
+  const users = await Users.find({});
+  return users;
+
+}
+
+app.get('/api/users', function(req,res){
+  getUsers().then((users)=>{
+    res.json(users)
+  })
+})
 
 
 const listener = app.listen(process.env.PORT || 3000, () => {
